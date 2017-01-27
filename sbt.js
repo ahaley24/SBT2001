@@ -8,6 +8,7 @@ bot.on("message", msg =>
         let prefix = "@@"; // Set the prefix
 
         var triggerWords = ["robbie" , "test"]; //Array to hold the words that correspond to images
+        var triggerLength = triggerWords.length;
         
         if(!msg.content.startsWith(prefix)) return; // Exit and stop if it's not there
         
@@ -15,13 +16,23 @@ bot.on("message", msg =>
 
         if(msg.content.startsWith(prefix))
         {
-            if (msg.content === prefix + triggerWords[0]) 
+            for (var i = 0; i < triggerLength; i++)
+            {
+                if (msg.content === prefix + triggerWords[i])
+                {
+                    msg.channel.sendMessage("The value is " + triggerWords[i]);
+                    msg.channel.sendFile('/VSCode/SBT2001/images/' + triggerWords[i] + '.jpg');
+                    return;
+                }
+            }
+
+/*            if (msg.content === prefix + triggerWords[0]) 
             { 
                 msg.channel.sendMessage("pong!");
                 var test = msg.content;
                 msg.channel.sendMessage("The test var is " + test);
                 return;
-            }
+            }*/
 
         }
 
