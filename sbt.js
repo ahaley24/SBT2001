@@ -6,19 +6,52 @@ bot.on("message", msg =>
 
     {
         let prefix = "@@"; // Set the prefix
+
+        var triggerWords = ["robbie" , "test"]; //Array to hold the words that correspond to images
         
         if(!msg.content.startsWith(prefix)) return; // Exit and stop if it's not there
         
         if(msg.author.bot) return;   // Exit if any bot
 
-        if (msg.content.startsWith(prefix + "ping")) { 
-            msg.channel.sendMessage("pong!");
+        if(msg.content.startsWith(prefix))
+        {
+            if (msg.content === prefix + triggerWords[0]) 
+            { 
+                msg.channel.sendMessage("pong!");
+                var test = msg.content;
+                msg.channel.sendMessage("The test var is " + test);
+                return;
+            }
+
         }
+
+
+
+/*        if (msg.content.startsWith(prefix)) //This code sends a DM message to a specific user ID (Ace in this case)
+        {
+            if(msg.content.includes("aceIRL"))
+            {
+                bot.users.get("xxxx").sendFile('/VSCode/SBT2001/images/robbie.jpeg'); 
+                msg.channel.sendMessage("Spamming Ace Completed.");
+                return;
+            }
+        }*/ //This code sends a DM message to a specific user ID (Ace in this case)
+
+
+
+        if (msg.content.includes(prefix + "aceIRL")) { 
+            msg.channel.sendFile('/VSCode/SBT2001/images/robbie.jpg'); 
+        } 
+
 
         if (msg.content.startsWith(prefix + "shutdown")) { 
             msg.channel.sendMessage("Shutting down...").then(() => { process.exit(); })
         } 
+        
+/*
         //Just for fun 
+
+
         if (msg.content.startsWith(prefix + "aceIRL")) { 
             msg.channel.sendFile('/VSCode/SBT2001/images/robbie.jpeg'); 
         } 
@@ -35,7 +68,10 @@ bot.on("message", msg =>
             msg.channel.sendFile("/VSCode/SBT2001/images/corellian-ale.jpg");
         }
 
+
         //Mixed Drinks
+
+
         if (msg.content.includes(prefix + "john collins")) { 
             msg.channel.sendFile('/VSCode/SBT2001/images/john-collins.jpg'); 
         } 
@@ -52,7 +88,10 @@ bot.on("message", msg =>
             msg.channel.sendFile('/VSCode/SBT2001/images/sex-on-the-beach.jpg'); 
         } 
 
+
         //Beers
+
+
         if (msg.content.includes(prefix + "blue moon")) { 
             msg.channel.sendFile('/VSCode/SBT2001/images/blue-moon.jpg'); 
         } 
@@ -99,7 +138,7 @@ bot.on("message", msg =>
 
         if (msg.content.includes(prefix + "bud light")) { 
             msg.channel.sendFile('/VSCode/SBT2001/images/water-glass.jpg'); 
-        } 
+        } */
     }
 );
 
