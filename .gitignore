@@ -46,6 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 test.js
+scrap.js
 node_modules/discord.js/webpack.config.js
 node_modules/discord.js/typings/tsconfig.json
 node_modules/discord.js/typings/README.md

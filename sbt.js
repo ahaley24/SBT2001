@@ -7,6 +7,10 @@ bot.on("message", msg =>
     {
         let prefix = "@@"; // Set the prefix
 
+        if (msg.content.startsWith(prefix + "shutdown")) {
+            msg.channel.sendMessage("Shutting down...").then(() => { process.exit(); })
+        } //Shutdown and exit
+
         var triggerWords = ["aceirl" , "test", "blue moon", "apple martini", "budweiser", "corellian ale", "corona", "dos equis", "guinness", "heineken", "john collins", "long island iced tea", "miller", "pepeirl", "pepeirl2", "sam adams", "sex on the beach", "stella", "vinylirl", "yuengling", "bud light", "miller lite", "water"]; //Array to hold the words that correspond to images
         var triggerLength = triggerWords.length;
         
