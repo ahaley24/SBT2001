@@ -1,7 +1,34 @@
 var Discord = require("discord.js"); //uses discord.js library
 const path = require('path');
 var bot = new Discord.Client();  //initiate new discord Client
+const settings = require('./settings.json')
 
+//define the embed for the Menu
+const menuEmbed = new Discord.RichEmbed()
+  /*
+   * Alternatively, use '#00AE86', [0, 174, 134] or an integer number.
+   */
+  .setColor(0x00AE86)
+  /*
+   * Inline fields may not display as inline if the thumbnail and/or image is too big.
+   */
+  .addField('@@beermenu', 'Our selection of beers, bottled or on tap. ')
+  .addField('@@cocktailmenu', 'Our selection of liquors and mixed drinks! ');
+
+//define the embed for the beermenu
+const beerMenu = new Discord.RichEmbed()
+  /*
+   * Alternatively, use '#00AE86', [0, 174, 134] or an integer number.
+   */
+  .setColor(0x00AE86)
+  /*
+   * Inline fields may not display as inline if the thumbnail and/or image is too big.
+   */
+  .addField('@@beermenu', 'Our selection of beers, bottled or on tap. ')
+  .addField('@@cocktailmenu', 'Our selection of liquors and mixed drinks! ');
+
+
+//start main bot
 bot.on("message", msg => 
 
     {
@@ -20,6 +47,14 @@ bot.on("message", msg =>
 
         if(msg.content.startsWith(prefix)) //Look for prefix
         {
+            if (msg.content.toLowerCase() === prefix + "menu")//present the menu options; this is for presentation and also to keep menu lists manageable
+            {
+                msg.channel.sendEmbed(menuEmbed, 'There are two menus to choose from.',{ disableEveryone: true });
+
+            }
+
+
+
             for (var i = 0; i < triggerLength; i++) //Cycle through triggerwords array
             {
                 if (msg.content.toLowerCase() === prefix + triggerWords[i]) //set case to lower and match msg to prefix+current triggerword. If no match, increment and retry
@@ -31,8 +66,21 @@ bot.on("message", msg =>
             }
 
         }
+
+
+
+/*        if (msg.content.startsWith(prefix)) //This code sends a DM message to a specific user ID (Ace in this case)
+        {
+            if(msg.content.includes("aceIRL"))
+            {
+                bot.users.get("xxxx").sendFile('/VSCode/SBT2001/images/robbie.jpeg'); 
+                msg.channel.sendMessage("Spamming Ace Completed.");
+                return;
+            }
+        }*/ //This code sends a DM message to a specific user ID (Ace in this case)
+
     }
 );
 
-bot.login("botTokenHereKTHX");
+bot.login(settings.token);
 
