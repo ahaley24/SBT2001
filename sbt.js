@@ -3,6 +3,8 @@ const path = require('path');
 var bot = new Discord.Client();  //initiate new discord Client
 const settings = require('./settings.json')
 
+let prefix = "@@"; // Set the prefix
+
 //define the embed for the Menu
 const menuEmbed = new Discord.RichEmbed()
   /*
@@ -32,7 +34,6 @@ const beerMenu = new Discord.RichEmbed()
 bot.on("message", msg => 
 
     {
-        let prefix = "@@"; // Set the prefix
 
         if (msg.content.startsWith(prefix + "shutdown")) {
             msg.channel.sendMessage("Shutting down...").then(() => { process.exit(); })
