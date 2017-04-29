@@ -39,7 +39,7 @@ bot.on("message", msg =>
             msg.channel.sendMessage("Shutting down...").then(() => { process.exit(); })
         } //Shutdown and exit
 
-        var triggerWords = ["aceirl" , "test", "blue moon", "apple martini", "budweiser", "corellian ale", "corona", "dos equis", "guinness", "heineken", "john collins", "long island iced tea", "miller", "pepeirl", "pepeirl2", "sam adams", "sex on the beach", "stella", "vinylirl", "yuengling", "bud light", "miller lite", "water"]; //Array to hold the words that correspond to images
+        var triggerWords = ["aceirl" , "test", "blue moon", "apple martini", "budweiser", "corellian ale", "corona", "dos equis", "guinness", "heineken", "john collins", "long island iced tea", "miller", "sam adams", "sex on the beach", "stella", "yuengling", "bud light", "miller lite", "water"]; //Array to hold the words that correspond to images
         var triggerLength = triggerWords.length;
         
         if(!msg.content.startsWith(prefix)) return; // Exit and stop if it's not there
